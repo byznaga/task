@@ -1,4 +1,4 @@
-<?php
+<?php namespace Byznaga\Controllers;
 
 class ProjectController {
 
@@ -29,7 +29,20 @@ class ProjectController {
 	 */
 	public function store()
 	{
-		//
+		$validator = Validator::make(Input::all(), Project::getRules());
+
+	    if ($validator->fails())
+	    {
+	        return Redirect::to('project/create')->withErrors($validator);
+	    }
+	    else
+	    {
+			$project = new Project;
+			$project->name = Input::get('name');
+			$project->save();
+
+			return Redirect::to('project');
+		}
 	}
 
 	/**
@@ -62,7 +75,22 @@ class ProjectController {
 	 */
 	public function update($id)
 	{
-		//
+		$project = Project::findOrFail($id);
+		
+	    $validator = Validator::make(Input::all(), Project::getRules());
+
+	    if ($validator->fails())
+	    {
+	        return Redirect::to('project/'.$id.'/edit')->withErrors($validator);
+	    }
+	    else
+	    {
+		    $project->name = Input::get('name');
+			$project->save();
+
+			return Redirect::to('project');
+			
+		}
 	}
 
 	/**
@@ -73,7 +101,9 @@ class ProjectController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$project = Project::findOrFail($id);
+		$project->delete();
+		return Redirect::to('project');
 	}
 
 }
