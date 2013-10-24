@@ -76,4 +76,19 @@ class WorkflowController {
 		//
 	}
 
+	public function showSteps($id)
+	{
+
+	}
+
+	public function showStep($workflowId, $stepId)
+	{
+
+	}
+
+	public function destroyStep($workflowId, $stepId)
+	{
+
+	}
+
 }

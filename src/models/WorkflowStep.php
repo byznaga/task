@@ -1,4 +1,4 @@
-<?php namespace Byznaga\Thyme\Models;
+<?php namespace Byznaga\Task\Models;
 
 use Byznaga\Oregano\Models\Oregano as OreganoModel;
 

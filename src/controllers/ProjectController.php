@@ -106,4 +106,9 @@ class ProjectController {
 		return Redirect::to('project');
 	}
 
+	public function showTasks($id)
+	{
+
+	}
+
 }

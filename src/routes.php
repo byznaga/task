@@ -6,11 +6,9 @@ Route::resource('workflow', 'WorkflowController');
 Route::resource('workflowstep', 'WorkflowStepController');
 Route::resource('tasktype', 'TaskTypeController');
 
+Route::get('/project/{id}/tasks', 'ProjectController@showTasks');
+Route::get('/task/{id}/subtasks', 'TaskController@showSubtasks');
 
-GET "/thyme/project/{id}/tasks" - Return one project and the tasks associated with it
-
-GET "/thyme/task/{id}/subtasks" - Returns all sub tasks
-
-GET "/thyme/workflow/{id}/step" - Return all workflow items for a workflow
-POST "/thyme/workflow/{id}/step/{id}" - Adds an workflow item to a workflow
-DELETE "/thyme/workflow/{id}/step/{id}" - Removes an workflow item to a workflow
+Route::get('/workflow/{id}/step', 'WorkflowController@showSteps');
+Route::post('/workflow/{workflowId}/step/{stepId}', 'WorkflowController@showStep');
+Route::delete('/workflow/{workflowId}/step/{stepId}', 'WorkflowController@destroyStep');
